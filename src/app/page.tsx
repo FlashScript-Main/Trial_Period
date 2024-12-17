@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button"
+import CategorySection from "@/template/home-page/CategorySection"
 
 const Home = () => {
 
     return (
         <main className="w-full border-2 border-rose-700 grid place-content-center">
-            <Button>Click me</Button>
+            <CategorySection />
         </main>
     )
 
