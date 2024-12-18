@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/theme/mode-toggle"
 
 const Header = () => {
 
@@ -6,6 +7,7 @@ const Header = () => {
             <div>Logo</div>
 
             <div>Menu(dark/light - sign up OR user logo)</div>
+            <div><ModeToggle /></div>
         </header>
     )
 
