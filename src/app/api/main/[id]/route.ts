@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { comments } from "../data";
 
 type ParamsType = {
@@ -5,16 +6,16 @@ type ParamsType = {
         id: string;
     }
 }
-export const GET = async (
-    _request: Request, 
-    { params }: ParamsType
-) => {
-    const comment = comments.find(
-        (comment) => comment.id === parseInt(params.id)
-    );
+// export const GET = async (
+//     _request: Request, 
+//     { params }: ParamsType
+// ) => {
+//     const comment = comments.find(
+//         (comment) => comment.id === parseInt(params.id)
+//     );
 
-    return Response.json(comment);
-}
+//     return Response.json(comment);
+// }
 
 
 /* --------------------------------------------- */
@@ -54,4 +55,24 @@ export const DELETE = async (
     comments.splice(index, 1);
 
     return Response.json(deletedComment);
+}
+
+
+/* --------------------------------------------- */
+
+
+// Redirect to specific URL
+export const GET = async (
+    _request: Request, 
+    { params }: ParamsType
+) => {
+    if (parseInt(params.id) > comments.length) {
+        redirect("/api/main");
+    }
+
+    const comment = comments.find(
+        (comment) => comment.id === parseInt(params.id)
+    );
+
+    return Response.json(comment);
 }
